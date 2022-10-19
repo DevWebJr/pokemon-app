@@ -7,24 +7,26 @@
 <body>
     <h1>Liste de Pokémons</h1>
     <div>
-        <input #input
-               (keyup.enter)="selectOnePokemon(input.value)"
-               type="number"
-        >
-        <p>Vous avez sélectionné {{pokemonSelected?.name}}</p>
-
-        <p>{{pokemonList[0].name}} </p>
-        <p>{{pokemonList[1].name}} </p>
-        <p>{{pokemonList[2].name}} </p>
-        <p>{{pokemonList[3].name}} </p>
-        <p>{{pokemonList[4].name}} </p>
-        <p>{{pokemonList[5].name}} </p>
-        <p>{{pokemonList[6].name}} </p>
-        <p>{{pokemonList[7].name}} </p>
-        <p>{{pokemonList[8].name}} </p>
-        <p>{{pokemonList[9].name}} </p>
-        <p>{{pokemonList[10].name}} </p>
-        <p>{{pokemonList[11].name}} </p>
+        <input #input (keyup.enter)="selectOnePokemon(input.value)" type="number">
+        <p *ngIf="!pokemonSelected; else elseBlock">Aucun Pokémon sélectionné.</p>
+        <ng-template #elseBlock><p>{{pokemonSelected?.name}}</p></ng-template>
+        <br>
+        <div *ngFor="let pokemon of pokemonList">
+            <div class="row">
+                <div class="col s12 m6 lime darken-4">
+                    <div class="card    z-depth-5">
+                        <div class="card-content white-text">
+                            <span class="card-title lime darken-4">{{pokemon.name}}</span>
+                            <img src="{{pokemon.picture}}" alt="">
+                        </div>
+                        <div class="card-action">
+                            <a href="#" class="btn-floating btn-large pulse">👍</a>
+                            <a href="#" class="btn-floating btn-large red pulse">👎</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

@@ -10,6 +10,7 @@ import {Pokemon} from "./pokemon";
 export class AppComponent implements OnInit{
   pokemonList: Pokemon[] = POKEMONS;
   pokemonSelected: Pokemon | undefined;
+  imagePath: any;
 
   ngOnInit() {
     console.table(this.pokemonList);
